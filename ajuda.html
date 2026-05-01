@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guia de Uso — Empório da Calais</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --red:#c91c22;--dark:#1a0a0a;--brown:#6b3a2a;
+      --accent:#e8a87c;--light:#fdf6f0;--border:#e8d5c4;
+      --text:#2d1a0e;--muted:#7a5c4a;
+    }
+    body{font-family:'Segoe UI',sans-serif;background:var(--light);color:var(--text);}
+
+    /* HEADER */
+    header{background:var(--dark);padding:18px 32px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+    header img{width:48px;height:48px;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 0 8px rgba(200,20,20,0.6));}
+    header h1{color:#f0d0c8;font-size:1.1rem;font-weight:700;}
+    header span{color:var(--red);font-size:0.9rem;}
+    .back-btn{margin-left:auto;background:var(--red);color:white;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-block;}
+    .back-btn:hover{filter:brightness(0.9);}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,var(--dark) 0%,#3a1010 100%);padding:60px 32px;text-align:center;}
+    .hero h2{color:#f0d0c8;font-size:2rem;margin-bottom:10px;}
+    .hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:560px;margin:0 auto 32px;}
+    .hero-cards{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
+    .hero-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:18px 24px;color:white;text-align:center;min-width:120px;}
+    .hero-card .icon{font-size:2rem;margin-bottom:6px;}
+    .hero-card p{font-size:0.78rem;color:rgba(255,255,255,0.6);}
+
+    /* NAV ÍNDICE */
+    .index-nav{background:white;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+    .index-nav a{padding:7px 16px;border-radius:99px;background:var(--light);border:1px solid var(--border);color:var(--brown);font-size:0.82rem;font-weight:600;text-decoration:none;transition:all 0.2s;}
+    .index-nav a:hover{background:var(--red);color:white;border-color:var(--red);}
+
+    /* SEÇÕES */
+    .section{max-width:860px;margin:0 auto;padding:48px 24px;}
+    .section-tag{display:inline-block;background:var(--red);color:white;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:0.06em;margin-bottom:12px;}
+    .section h2{font-size:1.6rem;color:var(--brown);margin-bottom:8px;}
+    .section .desc{color:var(--muted);font-size:0.95rem;margin-bottom:28px;line-height:1.6;}
+    .divider{border:none;border-top:2px solid var(--border);max-width:860px;margin:0 auto;}
+
+    /* MOCKUP */
+    .mockup{background:white;border-radius:14px;border:1px solid var(--border);box-shadow:0 4px 24px rgba(107,58,42,0.10);overflow:hidden;margin-bottom:28px;}
+    .mockup-bar{background:var(--brown);padding:10px 16px;display:flex;align-items:center;gap:8px;}
+    .mockup-bar span{width:12px;height:12px;border-radius:50%;display:inline-block;}
+    .mockup-bar .r{background:#ff5f57;}.mockup-bar .y{background:#febc2e;}.mockup-bar .g{background:#28c840;}
+    .mockup-bar .title{color:rgba(255,255,255,0.7);font-size:0.78rem;margin-left:8px;}
+    .mockup-body{padding:20px;}
+
+    /* STAT DEMO */
+    .demo-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+    .demo-stat{background:var(--light);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--border);}
+    .demo-stat .di{font-size:1.5rem;}
+    .demo-stat .dv{font-size:1.1rem;font-weight:700;color:var(--brown);}
+    .demo-stat .dl{font-size:0.7rem;color:var(--muted);}
+
+    /* RANK DEMO */
+    .demo-rank{background:var(--light);border-radius:10px;padding:14px;border:1px solid var(--border);}
+    .demo-rank-title{font-size:0.82rem;font-weight:700;color:var(--brown);margin-bottom:10px;}
+    .demo-rank-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);font-size:0.82rem;}
+    .demo-rank-item:last-child{border-bottom:none;}
+    .pos{width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--brown);font-weight:700;font-size:0.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .demo-rank-item span:nth-child(2){flex:1;}
+    .demo-rank-item strong{color:var(--brown);}
+
+    /* TABLE DEMO */
+    .demo-table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+    .demo-table th{background:var(--brown);color:white;padding:8px 10px;text-align:left;}
+    .demo-table td{padding:8px 10px;border-bottom:1px solid var(--border);}
+    .demo-table tr:last-child td{border-bottom:none;}
+    .badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:0.7rem;font-weight:600;}
+    .b-ok{background:#e8f5e9;color:#2e7d32;}
+    .b-low{background:#fff3e0;color:#e65100;}
+    .b-out{background:#ffebee;color:#c62828;}
+
+    /* CAIXA DEMO */
+    .demo-caixa{display:grid;grid-template-columns:1fr 180px;gap:12px;}
+    .demo-produtos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    .demo-prod-btn{background:var(--light);border:2px solid var(--border);border-radius:8px;padding:10px 6px;text-align:center;font-size:0.75rem;}
+    .demo-prod-btn .dp-nome{font-weight:600;color:var(--text);}
+    .demo-prod-btn .dp-preco{color:var(--brown);font-weight:700;}
+    .demo-resumo{background:var(--light);border-radius:10px;border:1px solid var(--border);padding:12px;font-size:0.78rem;}
+    .demo-resumo-title{font-weight:700;color:var(--brown);margin-bottom:8px;}
+    .demo-item-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);}
+    .demo-total-row{display:flex;justify-content:space-between;padding:8px 0 6px;font-weight:700;color:var(--brown);}
+    .demo-pago-btn{width:100%;background:#4caf50;color:white;border:none;border-radius:6px;padding:8px;font-weight:700;font-size:0.8rem;}
+
+    /* STEPS */
+    .steps{display:flex;flex-direction:column;gap:16px;margin-bottom:28px;}
+    .step{display:flex;gap:16px;align-items:flex-start;}
+    .step-num{width:36px;height:36px;border-radius:50%;background:var(--red);color:white;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .step-body h4{font-size:0.95rem;color:var(--brown);margin-bottom:4px;}
+    .step-body p{font-size:0.88rem;color:var(--muted);line-height:1.5;}
+
+    /* TIPS */
+    .tip{background:#fff8f0;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:16px;font-size:0.88rem;color:var(--text);line-height:1.5;}
+    .tip strong{color:var(--brown);}
+    .warn{background:#fff3e0;border-left:4px solid #ff9800;}
+    .good{background:#f1f8e9;border-left:4px solid #8bc34a;}
+
+    /* NOTIF DEMO */
+    .demo-notif{background:white;border-left:4px solid #ff9800;border-radius:10px;padding:14px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.1);max-width:300px;}
+    .demo-notif-title{font-weight:700;font-size:0.85rem;color:#e65100;margin-bottom:4px;}
+    .demo-notif-body{font-size:0.8rem;color:var(--muted);margin-bottom:10px;}
+    .demo-notif-btns{display:flex;gap:6px;}
+    .demo-notif-btns button{font-size:0.72rem;padding:4px 10px;border-radius:6px;border:none;cursor:default;font-weight:600;}
+
+    /* FOOTER */
+    footer{background:var(--dark);color:rgba(255,255,255,0.4);text-align:center;padding:24px;font-size:0.8rem;margin-top:40px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo-emporio.JPG" alt="Logo"/>
+  <div><h1>Guia de Uso</h1><span>Empório da Calais</span></div>
+  <a href="index.html" class="back-btn">← Voltar ao Sistema</a>
+</header>
+
+<div class="hero">
+  <h2>Como usar o sistema</h2>
+  <p>Este guia explica cada parte do programa de forma simples. Leia com calma — em poucos minutos você estará usando tudo com facilidade.</p>
+  <div class="hero-cards">
+    <div class="hero-card"><div class="icon">📊</div><p>Dashboard</p></div>
+    <div class="hero-card"><div class="icon">🧾</div><p>Caixa</p></div>
+    <div class="hero-card"><div class="icon">📦</div><p>Estoque</p></div>
+    <div class="hero-card"><div class="icon">🛒</div><p>Vendas</p></div>
+    <div class="hero-card"><div class="icon">📋</div><p>Histórico</p></div>
+  </div>
+</div>
+
+<nav class="index-nav">
+  <a href="#visao-geral">Visão Geral</a>
+  <a href="#dashboard">📊 Dashboard</a>
+  <a href="#caixa">🧾 Caixa</a>
+  <a href="#estoque">📦 Estoque</a>
+  <a href="#vendas">🛒 Vendas</a>
+  <a href="#historico">📋 Histórico</a>
+  <a href="#notificacoes">⚠️ Notificações</a>
+  <a href="#dicas">💡 Dicas</a>
+</nav>
+
+<!-- VISÃO GERAL -->
+<section class="section" id="visao-geral">
+  <span class="section-tag">COMEÇANDO</span>
+  <h2>Visão Geral do Sistema</h2>
+  <p class="desc">O sistema é dividido em 5 páginas, acessadas pelo menu no topo da tela. Cada uma tem uma função diferente. Veja abaixo o que cada uma faz:</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Primeiro: cadastre seus produtos no Estoque</h4><p>Antes de usar o caixa ou registrar vendas, você precisa ter os produtos cadastrados com nome, preço e quantidade.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Depois: use o Caixa para registrar as vendas do dia</h4><p>Selecione os produtos vendidos, confira o total e clique em "Pago". O estoque é atualizado automaticamente.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Acompanhe tudo no Dashboard</h4><p>Veja os produtos mais vendidos, o lucro total e alertas de estoque baixo em tempo real.</p></div></div>
+  </div>
+  <div class="tip"><strong>💡 Dica:</strong> Todos os dados são salvos automaticamente na nuvem. Você pode acessar o sistema de qualquer computador ou celular com internet.</div>
+</section>
+<hr class="divider"/>
+
+<!-- DASHBOARD -->
+<section class="section" id="dashboard">
+  <span class="section-tag">PÁGINA 1</span>
+  <h2>📊 Dashboard</h2>
+  <p class="desc">A página inicial do sistema. Mostra um resumo completo de tudo que está acontecendo no empório — vendas, lucro, produtos em falta e rankings.</p>
+
+  <div class="mockup">
+    <div class="mockup-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="title">Dashboard — Empório da Calais</span></div>
+    <div class="mockup-body">
+      <div class="demo-stats">
+        <div class="demo-stat"><div class="di">💰</div><div class="dv">R$ 1.240,00</div><div class="dl">Total em Vendas</div></div>
+        <div class="demo-stat"><div class="di">📈</div><div class="dv" style="color:#4caf50">R$ 480,00</div><div class="dl">Lucro Total</div></div>
+        <div class="demo-stat"><div class="di">📅</div><div class="dv">R$ 95,00</div><div class="dl">Vendas Hoje</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+        <div class="demo-rank">
+          <div class="demo-rank-title">🏆 Mais Vendidos</div>
+          <div class="demo-rank-item"><span class="pos">1</span><span>Coxinha</span><strong>48 un.</strong></div>
+          <div class="demo-rank-item"><span class="pos">2</span><span>Brigadeiro</span><strong>35 un.</strong></div>
+          <div class="demo-rank-item"><span class="pos">3</span><span>Refrigerante</span><strong>22 un.</strong></div>
+        </div>
+        <div class="demo-rank">
+          <div class="demo-rank-title">💚 Maior Lucro</div>
+          <div class="demo-rank-item"><span class="pos">1</span><span>Coxinha</span><strong>R$ 192,00</strong></div>
+          <div class="demo-rank-item"><span class="pos">2</span><span>Brigadeiro</span><strong>R$ 140,00</strong></div>
+          <div class="demo-rank-item"><span class="pos">3</span><span>Suco</span><strong>R$ 88,00</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num" style="background:#2196f3">💰</div><div class="step-body"><h4>Total em Vendas</h4><p>Soma de tudo que foi vendido desde o início. Inclui todas as datas.</p></div></div>
+    <div class="step"><div class="step-num" style="background:#4caf50">📈</div><div class="step-body"><h4>Lucro Total</h4><p>Diferença entre o preço de venda e o custo de cada produto. Se estiver verde, está lucrando. Se vermelho, está vendendo abaixo do custo.</p></div></div>
+    <div class="step"><div class="step-num" style="background:#ff9800">📅</div><div class="step-body"><h4>Vendas Hoje</h4><p>Quanto foi vendido somente no dia de hoje.</p></div></div>
+    <div class="step"><div class="step-num" style="background:#9c27b0">🏆</div><div class="step-body"><h4>Rankings</h4><p>Mostra os 5 produtos mais e menos vendidos, e os que dão mais e menos lucro. Ótimo para saber o que vale a pena repor.</p></div></div>
+  </div>
+  <div class="tip good"><strong>✅ Não precisa fazer nada aqui.</strong> O Dashboard é só para visualização — ele se atualiza sozinho conforme você registra vendas.</div>
+</section>
+<hr class="divider"/>
+
+<!-- CAIXA -->
+<section class="section" id="caixa">
+  <span class="section-tag">PÁGINA 2</span>
+  <h2>🧾 Caixa</h2>
+  <p class="desc">É aqui que você registra as vendas do dia a dia. Funciona como um caixa de loja: você seleciona os produtos, vê o total e confirma o pagamento.</p>
+
+  <div class="mockup">
+    <div class="mockup-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="title">Caixa — Empório da Calais</span></div>
+    <div class="mockup-body">
+      <div class="demo-caixa">
+        <div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-bottom:8px;font-weight:600;">Selecionar Produtos</div>
+          <div class="demo-produtos">
+            <div class="demo-prod-btn"><div class="dp-nome">Coxinha</div><div class="dp-preco">R$ 5,00</div><div style="font-size:0.68rem;color:var(--muted)">Estoque: 20</div></div>
+            <div class="demo-prod-btn"><div class="dp-nome">Brigadeiro</div><div class="dp-preco">R$ 4,00</div><div style="font-size:0.68rem;color:var(--muted)">Estoque: 15</div></div>
+            <div class="demo-prod-btn"><div class="dp-nome">Suco</div><div class="dp-preco">R$ 6,00</div><div style="font-size:0.68rem;color:var(--muted)">Estoque: 8</div></div>
+            <div class="demo-prod-btn" style="opacity:0.4"><div class="dp-nome">Pastel</div><div class="dp-preco">R$ 7,00</div><div style="font-size:0.68rem;color:#e53935">Sem estoque</div></div>
+            <div class="demo-prod-btn"><div class="dp-nome">Refrigerante</div><div class="dp-preco">R$ 5,00</div><div style="font-size:0.68rem;color:var(--muted)">Estoque: 12</div></div>
+            <div class="demo-prod-btn"><div class="dp-nome">Água</div><div class="dp-preco">R$ 2,50</div><div style="font-size:0.68rem;color:var(--muted)">Estoque: 30</div></div>
+          </div>
+        </div>
+        <div class="demo-resumo">
+          <div class="demo-resumo-title">🧾 Resumo</div>
+          <div class="demo-item-row"><span>Coxinha x2</span><span>R$ 10,00</span></div>
+          <div class="demo-item-row"><span>Suco x1</span><span>R$ 6,00</span></div>
+          <div class="demo-total-row"><span>Total</span><span style="color:#4caf50">R$ 16,00</span></div>
+          <button class="demo-pago-btn">✅ Pago</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Clique no produto para adicionar</h4><p>Cada clique adiciona 1 unidade do produto ao resumo. Pode clicar várias vezes ou usar os botões + e − no resumo para ajustar a quantidade.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Confira o resumo à direita</h4><p>Todos os itens adicionados aparecem com quantidade e valor. O total é calculado automaticamente.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Clique em "Pago"</h4><p>Uma confirmação aparece com o valor total. Ao confirmar, as vendas são registradas e o estoque é descontado automaticamente.</p></div></div>
+  </div>
+  <div class="tip warn"><strong>⚠️ Atenção:</strong> Produtos sem estoque aparecem acinzentados e não podem ser selecionados. Reponha o estoque na página Estoque.</div>
+  <div class="tip"><strong>💡 Dica:</strong> Use a barra de busca para encontrar produtos rapidamente quando tiver muitos cadastrados.</div>
+</section>
+<hr class="divider"/>
+
+<!-- ESTOQUE -->
+<section class="section" id="estoque">
+  <span class="section-tag">PÁGINA 3</span>
+  <h2>📦 Estoque</h2>
+  <p class="desc">Aqui você cadastra, edita e remove produtos. É também onde você atualiza a quantidade quando repõe mercadoria.</p>
+
+  <div class="mockup">
+    <div class="mockup-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="title">Estoque — Empório da Calais</span></div>
+    <div class="mockup-body">
+      <table class="demo-table">
+        <thead><tr><th>Produto</th><th>Categoria</th><th>Qtd</th><th>Custo</th><th>Preço Venda</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Coxinha</strong></td><td>Salgados</td><td>20</td><td>R$ 2,00</td><td>R$ 5,00</td><td><span class="badge b-ok">OK</span></td></tr>
+          <tr><td><strong>Brigadeiro</strong></td><td>Doces</td><td>3</td><td>R$ 1,50</td><td>R$ 4,00</td><td><span class="badge b-low">Estoque baixo</span></td></tr>
+          <tr><td><strong>Pastel</strong></td><td>Salgados</td><td>0</td><td>R$ 3,00</td><td>R$ 7,00</td><td><span class="badge b-out">Sem estoque</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Adicionar novo produto — botão "+ Novo Produto"</h4><p>Preencha: nome, categoria, quantidade atual, quantidade mínima para alerta, custo (quanto você pagou) e preço de venda (quanto cobra do cliente).</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Editar produto — botão ✏️</h4><p>Use para atualizar o preço, repor estoque (aumentar a quantidade) ou corrigir qualquer informação.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Excluir produto — botão 🗑️</h4><p>Remove o produto do sistema. Cuidado: essa ação não pode ser desfeita.</p></div></div>
+  </div>
+
+  <div class="tip"><strong>💡 Quantidade Mínima:</strong> Define quando o sistema avisa que o estoque está baixo. Se colocar 5, quando restar 5 ou menos unidades você recebe um alerta.</div>
+  <div class="tip warn"><strong>⚠️ Custo x Preço de Venda:</strong> Preencha os dois corretamente — o sistema usa essa diferença para calcular o lucro no Dashboard.</div>
+</section>
+<hr class="divider"/>
+
+<!-- VENDAS -->
+<section class="section" id="vendas">
+  <span class="section-tag">PÁGINA 4</span>
+  <h2>🛒 Vendas</h2>
+  <p class="desc">Permite registrar uma venda de um produto por vez, com controle de data e preço. Também mostra todas as vendas feitas hoje.</p>
+
+  <div class="mockup">
+    <div class="mockup-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="title">Vendas — Empório da Calais</span></div>
+    <div class="mockup-body">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+        <div style="background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:0.78rem;"><div style="color:var(--muted);margin-bottom:4px;">Produto</div><div style="font-weight:600;">Coxinha</div></div>
+        <div style="background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:0.78rem;"><div style="color:var(--muted);margin-bottom:4px;">Quantidade</div><div style="font-weight:600;">3</div></div>
+        <div style="background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:0.78rem;"><div style="color:var(--muted);margin-bottom:4px;">Preço Unit.</div><div style="font-weight:600;">R$ 5,00</div></div>
+        <div style="background:var(--light);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:0.78rem;"><div style="color:var(--muted);margin-bottom:4px;">Data</div><div style="font-weight:600;">01/05/2026</div></div>
+      </div>
+      <table class="demo-table">
+        <thead><tr><th>Produto</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Data</th></tr></thead>
+        <tbody>
+          <tr><td>Coxinha</td><td>3</td><td>R$ 5,00</td><td><strong>R$ 15,00</strong></td><td>01/05/2026</td></tr>
+          <tr><td>Suco</td><td>2</td><td>R$ 6,00</td><td><strong>R$ 12,00</strong></td><td>01/05/2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="tip"><strong>💡 Diferença entre Caixa e Vendas:</strong> O Caixa é para o atendimento rápido (vários produtos de uma vez). A página Vendas é para registrar uma venda por vez, útil para corrigir ou lançar vendas de datas anteriores.</div>
+  <div class="tip warn"><strong>⚠️ Excluir uma venda</strong> restaura automaticamente a quantidade no estoque.</div>
+</section>
+<hr class="divider"/>
+
+<!-- HISTÓRICO -->
+<section class="section" id="historico">
+  <span class="section-tag">PÁGINA 5</span>
+  <h2>📋 Histórico</h2>
+  <p class="desc">Mostra todas as vendas já registradas, com filtros por data, categoria e produto. Também permite exportar os dados.</p>
+
+  <div class="mockup">
+    <div class="mockup-bar"><span class="r"></span><span class="y"></span><span class="g"></span><span class="title">Histórico — Empório da Calais</span></div>
+    <div class="mockup-body">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center;font-size:0.78rem;">
+        <span style="color:var(--muted)">De:</span><span style="background:var(--light);border:1px solid var(--border);border-radius:6px;padding:4px 8px;">01/04/2026</span>
+        <span style="color:var(--muted)">Até:</span><span style="background:var(--light);border:1px solid var(--border);border-radius:6px;padding:4px 8px;">01/05/2026</span>
+        <span style="background:var(--light);border:1px solid var(--border);border-radius:6px;padding:4px 8px;">Salgados</span>
+        <span style="background:var(--brown);color:white;border-radius:6px;padding:4px 10px;font-weight:600;">Filtrar</span>
+      </div>
+      <table class="demo-table">
+        <thead><tr><th>Data</th><th>Produto</th><th>Qtd</th><th>Total</th><th>Lucro</th></tr></thead>
+        <tbody>
+          <tr><td>01/05/2026</td><td>Coxinha</td><td>3</td><td>R$ 15,00</td><td style="color:#4caf50;font-weight:600">R$ 9,00</td></tr>
+          <tr><td>30/04/2026</td><td>Pastel</td><td>5</td><td>R$ 35,00</td><td style="color:#4caf50;font-weight:600">R$ 20,00</td></tr>
+        </tbody>
+      </table>
+      <div style="display:flex;gap:20px;padding-top:12px;font-size:0.82rem;">
+        <span>Total vendido: <strong>R$ 50,00</strong></span>
+        <span>Lucro: <strong style="color:#4caf50">R$ 29,00</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Filtrar por período</h4><p>Coloque uma data inicial e final para ver somente as vendas daquele período. Útil para fechar o mês.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Filtrar por categoria ou produto</h4><p>Quer ver só as vendas de salgados? Selecione a categoria. Quer ver um produto específico? Digite o nome na busca.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Exportar CSV</h4><p>Baixa uma planilha com todas as vendas filtradas. Pode abrir no Excel ou Google Planilhas.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Backup JSON</h4><p>Salva uma cópia de segurança de todos os dados. Guarde em local seguro — serve para restaurar o sistema se necessário.</p></div></div>
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- NOTIFICAÇÕES -->
+<section class="section" id="notificacoes">
+  <span class="section-tag">ALERTAS</span>
+  <h2>⚠️ Notificações de Estoque Baixo</h2>
+  <p class="desc">Quando um produto atingir a quantidade mínima definida, um aviso aparece automaticamente no canto da tela.</p>
+
+  <div style="margin-bottom:28px;">
+    <div class="demo-notif">
+      <div class="demo-notif-title">⚠️ Estoque Baixo</div>
+      <div class="demo-notif-body"><strong>Brigadeiro</strong> — apenas <strong>2</strong> unidade(s) restante(s).</div>
+      <div class="demo-notif-btns">
+        <button style="background:#e0e0e0;color:#333;">Minimizar</button>
+        <button style="background:#e53935;color:white;">Fechar</button>
+        <button style="background:#757575;color:white;">Não mostrar mais</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="step-num" style="background:#ff9800">M</div><div class="step-body"><h4>Minimizar</h4><p>Recolhe o aviso mas ele continua aparecendo. Bom para quando você já viu mas ainda não repôs.</p></div></div>
+    <div class="step"><div class="step-num" style="background:#e53935">F</div><div class="step-body"><h4>Fechar</h4><p>Fecha o aviso por agora. Na próxima vez que abrir o sistema, ele aparece de novo se o estoque ainda estiver baixo.</p></div></div>
+    <div class="step"><div class="step-num" style="background:#757575">N</div><div class="step-body"><h4>Não mostrar mais</h4><p>Para de mostrar o aviso para aquele produto específico. Use quando não quiser mais ser lembrado sobre ele.</p></div></div>
+  </div>
+</section>
+<hr class="divider"/>
+
+<!-- DICAS -->
+<section class="section" id="dicas">
+  <span class="section-tag">DICAS FINAIS</span>
+  <h2>💡 Dicas para o dia a dia</h2>
+  <p class="desc">Pequenos hábitos que fazem o sistema funcionar melhor.</p>
+  <div class="tip good"><strong>✅ Repor estoque:</strong> Quando chegar mercadoria nova, vá em Estoque → clique no ✏️ do produto → atualize a quantidade.</div>
+  <div class="tip good"><strong>✅ Fechar o dia:</strong> No final do dia, acesse o Histórico e filtre pela data de hoje para ver o resumo de vendas e lucro.</div>
+  <div class="tip good"><strong>✅ Backup mensal:</strong> Uma vez por mês, vá em Histórico → clique em "Backup JSON" e salve o arquivo no computador ou pendrive.</div>
+  <div class="tip warn"><strong>⚠️ Custo do produto:</strong> Sempre preencha o custo corretamente ao cadastrar. Sem ele, o lucro no Dashboard não será calculado direito.</div>
+  <div class="tip warn"><strong>⚠️ Internet:</strong> O sistema precisa de internet para salvar os dados. Se estiver sem conexão, aguarde reconectar antes de registrar vendas.</div>
+</section>
+
+<footer>
+  Empório da Calais — Sistema de Controle de Estoque e Vendas
+</footer>
+
+</body>
+</html>

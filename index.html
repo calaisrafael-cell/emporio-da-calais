@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Controle Estoque e Vendas - Empório da Calais</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <img src="logo-emporio.JPG" alt="Logo Empório da Calais" id="splash-logo" />
+  <h1>Controle Estoque e Vendas</h1>
+  <h2>Empório da Calais</h2>
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <p class="loading-text">Carregando sistema...</p>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-logo">
+      <img src="logo-emporio.JPG" alt="Logo" />
+      <span>Empório da Calais</span>
+    </div>
+    <h1 class="header-title">Controle Estoque e Vendas</h1>
+    <nav>
+      <button onclick="navigate('dashboard')" id="nav-dashboard" class="nav-btn active">📊 Dashboard</button>
+      <button onclick="navigate('caixa')" id="nav-caixa" class="nav-btn">🧾 Caixa</button>
+      <button onclick="navigate('estoque')" id="nav-estoque" class="nav-btn">📦 Estoque</button>
+      <button onclick="navigate('vendas')" id="nav-vendas" class="nav-btn">🛒 Vendas</button>
+      <button onclick="navigate('historico')" id="nav-historico" class="nav-btn">📋 Histórico</button>
+      <a href="ajuda.html" target="_blank" class="nav-btn" style="text-decoration:none;">❓ Ajuda</a>
+    </nav>
+  </header>
+
+  <!-- NOTIFICAÇÕES -->
+  <div id="notificacoes-container"></div>
+
+  <!-- PÁGINAS -->
+  <main>
+    <div id="page-dashboard" class="page"></div>
+    <div id="page-caixa" class="page hidden"></div>
+    <div id="page-estoque" class="page hidden"></div>
+    <div id="page-vendas" class="page hidden"></div>
+    <div id="page-historico" class="page hidden"></div>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+<script type="module" src="firebase.js"></script>
+</body>
+</html>
